@@ -1,0 +1,669 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;font-weight:normal;}
+html,body,fieldset,img,iframe,abbr{border:0;}
+i,cite,em,var,address,dfn{font-style:normal;}
+[hidefocus],summary{outline:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+sup,sub{font-size:83%;}
+pre,code,kbd,samp{font-family:inherit;}
+q:before,q:after{content:none;}
+textarea{overflow:auto;resize:none;}
+label,summary{cursor:default;}
+a,button{cursor:pointer;}
+h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;}
+del,ins,u,s,a,a:hover{text-decoration:none;}
+body,textarea,input,button,select,keygen,legend{font:14px/1.14 Arial,"Microsoft YaHei",\5b8b\4f53;color:#595757;outline:0;}
+body{background:#f3f2f2;font-family:Tahoma,"Microsoft YaHei",\5b8b\4f53;overflow-x:hidden;}
+a{color:#3c3c3c;text-decoration:none;outline:none;font-size: 14px;}
+a:focus {outline:none;}
+a:hover{color:#3d8ccb;text-decoration:none;}
+.f-fl{float:left;}
+.f-fr{float:right;}
+// 清除浮动
+@mixin clearfix {
+  zoom: 1;
+  box-sizing: border-box;
+  &:before,
+  &:after { content: ""; display: table; }
+  &:after {
+      clear: both;
+      visibility: hidden;
+      font-size: 0;
+      height: 0;
+  }
+}
+
+// 常用快捷类
+// 以下属性 0 - 200
+@for $i from 0 through 200 {
+  .w#{$i} { width: $i + px; }
+  .h#{$i} { height: $i + px; }
+}
+
+@for $i from 0 through 100 {
+  .w#{$i}vw { width: $i + vw; }
+  .w-per#{$i} { width: $i * 1%; }
+  .h#{$i}vh { height: $i + vh; }
+  .h-per#{$i} { height: $i * 1%; }
+}
+@for $i from 10 through 40 {
+  .font#{$i} {font-size: $i + px;}
+  .lh#{$i} {line-height: $i + px;}
+}
+
+@for $i from -10 through 100 {
+  .p#{$i} { padding: $i + px; }
+  .pl#{$i} { padding-left: $i + px; }
+  .pt#{$i} { padding-top: $i + px; }
+  .pr#{$i} { padding-right: $i + px; }
+  .pb#{$i} { padding-bottom: $i + px; }
+  .ml#{$i} { margin-left: $i + px; }
+  .mt#{$i} { margin-top: $i + px; }
+  .mr#{$i} { margin-right: $i + px; }
+  .mb#{$i} { margin-bottom: $i + px; }
+  .l#{$i} { left: $i + px; }
+  .t#{$i} { top: $i + px; }
+  .r#{$i} { right: $i + px; }
+  .b#{$i} { bottom: $i + px; }
+}
+
+@for $i from -1 through 100 {
+  .z#{$i} { z-index: $i; }
+}
+
+
+// 特殊值需要单独去加
+// margin-left
+.ml {
+  &125 {margin-left: 125px;}
+  &137 {margin-left: 137px;}
+  &143 {margin-left: 143px;}
+  &-193 {margin-left: -193px;}
+}
+// margin-right
+.mr {}
+// margin-top
+.mt {}
+// margin-bottom
+.mb {}
+// padding
+.p {}
+// padding-left
+.pl {}
+// padding-right
+.pr {}
+// padding-top
+.pt {}
+// padding-bottom
+.pb {}
+
+// left top bottom right
+.l{
+  &500 {left: 500px;}
+  &526 {left: 526px;}
+  &-per {
+    &-50 {left: 50%;}
+  }
+}
+.b {
+  &-55{ bottom: -55px;}
+}
+.t {
+  &105 {top: 105px;}
+  &146 {top: 146px;}
+}
+.r {
+  &163 {right: 163px;}
+  &166 {right: 166px;}
+  &185 {right: 185px;}
+  &-30 {right: -30px;}
+  &-32 {right: -32px;}
+  &-110 {right: -110px;}
+  &-130 {right: -130px;}
+  &-344 {right: -344px;}
+}
+// z-index
+.z{
+  &2003 {z-index: 2003;}
+}
+// width
+.w {
+  &208 {width: 208px;}
+  &220 {width: 220px;}
+  &221 {width: 221px;}
+  &241 {width: 241px;}
+  &244 {width: 244px;}
+  &260 {width: 260px;}
+  &264 {width: 264px;}
+  &270 {width: 270px;}
+  &290 {width: 290px;}
+  &300 {width: 300px;}
+  &320 {width: 320px;}
+  &335 {width: 335px;}
+  &420 {width: 420px;}
+  &434 {width: 434px;}
+  &453 {width: 453px;}
+  &456 {width: 456px;}
+  &463 {width: 463px;}
+  &470 {width: 470px;}
+  &478 {width: 478px;}
+  &483 {width: 483px;}
+  &488 {width: 488px;}
+  &491 {width: 491px;}
+  &498 {width: 498px;}
+  &500 {width: 500px;}
+  &503 {width: 503px;}
+  &595 {width: 595px;}
+  &600 {width: 600px;}
+  &654 {width: 654px;}
+  &690 {width: 690px;}
+  &760 {width: 760px;}
+  &910 {width: 910px;}
+}
+// height
+.h {
+  &208 {height: 208px;}
+  &210 {height: 210px;}
+  &220 {height: 220px;}
+  &221 {height: 221px;}
+  &240 {height: 240px;}
+  &242 {height: 242px;}
+  &250 {height: 250px;}
+  &255 {height: 255px;}
+  &260 {height: 260px;}
+  &280 {height: 280px;}
+  &300 {height: 300px;}
+  &306 {height: 306px;}
+  &366 {height: 366px;}
+  &388 {height: 388px;}
+  &450 {height: 450px;}
+  &463 {height: 463px;}
+  &480 {height: 480px;}
+  &501 {height: 501px;}
+  &545 {height: 545px;}
+  &598 {height: 598px;}
+  &632 {height: 632px;}
+  &700 {height: 700px;}
+  &752 {height: 752px;}
+  &796 {height: 796px;}
+  &869 {height: 869px;}
+  &875 {height: 875px;}
+  &880 {height: 880px;}
+  &890 {height: 890px;}
+  &983 {height: 983px;}
+  &1080 {height: 1080px;}
+}
+// line-height
+.lh {}
+
+// flex快捷方式
+.fcc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fcb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+// clear
+.clear {
+  &::after {content: ' ';display: block;clear: both;}
+  &::before {content: ' ';display: block;clear: both;}
+}
+// 鼠标
+.pointer-events {
+  &-none {pointer-events: none;}
+  &-all {pointer-events: all;}
+}
+.pe {
+  &n {pointer-events: none;}
+  &a {pointer-events: all;}
+}
+// over-flow
+.of {
+  &h {overflow: hidden;}
+  &xh {overflow-x: hidden;}
+  &yh {overflow-y: hidden;}
+}
+.el-{
+  &ofxh {
+    .el-scrollbar__wrap {overflow-x: hidden;}
+  }
+}
+// 超出省略号
+.over{
+  &-ellipsis{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+  }
+   &-more{
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    &2{
+      -webkit-line-clamp: 2;
+     }
+   }
+}
+
+// cursor
+.cp {
+  cursor: pointer;
+}
+.cursor{
+  &-pointer{
+    cursor: pointer;
+  }
+}
+//overflow
+.overflow{
+  &-scr{
+    &y{
+      overflow-y:scroll;
+    }
+  }
+}
+// 隐藏滚动条
+.scroll{
+  &-none{
+    -ms-overflow-style: none; /* IE 10+ */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar{
+      display: none; /* Chrome Safari */
+    }
+  }
+}
+// margin-left
+.m0a {
+  margin: 0 auto;
+}
+.usn {
+  user-select: none;
+}
+
+// color
+.color {
+  &fff {color: #ffffff;}
+  &67FDE1 {color: #67FDE1;}
+  &2aff88 {color: #2aff88;}
+  &ff3f23 {color: #ff3f23;}
+  &FF3F24 {color: #FF3F24;}
+  &B2C8E7 {color: #B2C8E7;}
+  &b2c8e7 {color: #b2c8e7;}
+  &e4ebf6 {color: #e4ebf6;}
+  &000 {color: #000000;}
+  &2f {color: #2f2f2f;}
+  &7c {color: #7c7c7c;}
+  &73A0DF {color: #73A0DF;}
+  &E4EBF6 {color: #E4EBF6;}
+  &00D3FF {color: #00D3FF;}
+  &2f2 {color: #2f2f2f;}
+  &7c7 {color: #7c7c7c;}
+  &189 {color: #1890FF;}
+  &ff7 {color: #FF7B0A;}
+  &fff {color: #ffffff;}
+  &69d {color: #69D389;}
+  &206 {color: #2069FF;}
+  &999 {color: #999999;}
+  &22d {color: #22D13B}
+  &9e9 {color: #9E9D9D}
+  &9E9D9D {color: #9E9D9D}
+  &ef2 {color: #EF2F2F}
+  &afb {color: #afb2b4}
+  &4d4 {color: #4D4D4D}
+  &ff8 {color: #FF8400;}
+}
+// background-color
+.bgc {
+  &000 {background-color: #000000;}
+  &fff {background-color: #ffffff;}
+  &f7f {background-color: #F7F7F7;}
+  &f8f {background-color: #f8f8f8;}
+  &f6f {background-color: #F6FBFF;}
+  &189 {background-color: #1890FF;}
+  &206 {background-color: #2069FF;}
+  &1890FF {background-color: #1890FF;}
+  &d0e3ff {background-color: #d0e3ff;}
+  &69d {background-color: #69D389;}
+  &f0f {background-color: #F0F2F5;}
+  &d9d {background-color: #D9D9D9;}
+  &22d {background-color: #22D13B;}
+  &afb {background-color: #afb2b4;}
+  &d4d {background-color: #D4D8DD;}
+  &c6c {background-color: #C6CAD1;}
+  &dce {background-color: #DCE7F1;}
+  &edf {background-color: #EDF0F7;}
+  &e0e {background-color: #E0E4E7;}
+  &02c {background-color: #02C6A3;}
+  
+}
+// background-repeat
+.bgr {
+  &-no {background-repeat: no-repeat;}
+}
+// float
+.f {
+  &-fl {float: left;}
+  &-fr {float: right;}
+}
+// border
+
+.border {
+  &-w1 {border-width: 1px;}
+  &-bs { border-style: solid;}
+  &-rad4 {border-radius: 4px;}
+  &-rad {
+    &-per{
+      &50 {
+        border-radius: 50%;
+      }
+    }
+  }
+  // border-color 
+  &-c {
+    &-ccc {border-color: #ccc;}
+    &-f1 {border-color: #f1f1f1;}
+    &-e8 {border-color: #e8e8e8;}
+    &-18 {border-color: #1890FF;}
+    &-d9 {border-color: #D9D9D9;}
+    &-fa {border-color: #FAFAFA;}
+    &-dc {border-color: #DCDFE6;}
+  }
+  &-b1s {border: 1px solid #ccc;}
+  &-rig {
+    &e8{
+      border-right: 1px solid #e8e8e8;
+    }
+    &d9{
+      border-right: 1px solid #d9d9d9;
+    }
+    &bf{
+      border-right: 1px solid #BFC2C6;
+    }
+    &-none{
+      border-right: none;
+    }
+  }
+  &-bot {
+    &e8{
+      border-bottom: 1px solid #e8e8e8;
+    }
+    &d9{
+      border-bottom: 1px solid #D9D9D9;
+    }
+    &dc{
+      border-bottom: 1px solid #DCE0E8;
+    }
+  }
+}
+// box
+.bbb{box-sizing: border-box;}
+.box{
+  &-size{
+    box-sizing: border-box;
+  }
+}
+// font
+.font {
+  // font-family
+  &-f {
+    &-num {font-family: 'PangMenZhengDaoBiaoTiTi';}
+    &-han {font-family: 'ALiHanYiZhiNengHeiTi';}
+  }
+  // font-weight
+  &-w {
+    &-family{
+      &-YH{
+        font-family: Microsoft YaHei;
+      }
+    }
+    &-normal {
+      font-weight: normal;
+    }
+    &-blod {
+      font-weight: bold;
+    }
+    &300 {
+      font-weight: 300;
+    }
+    &400 {
+      font-weight: 400;
+    }
+  }
+}
+// text-align
+.ta {
+  &c {text-align: center;}
+  &l {text-align: left;}
+  &r {text-align: right;}
+}
+// letter-spacing
+.letter-s {
+  &normal {letter-spacing: normal;}
+  &1 {letter-spacing: 1;}
+}
+// display
+.display {
+  &-none {display: none;}
+  &-block {display: block;}
+  &-flex {display: flex;}
+}
+// flex
+.flex{
+  &-auto {flex: auto;}
+  &-align-start {align-items: flex-start;}
+  &-content {flex: content;}
+  &-none {flex: none;}
+  &-dir{
+    &-row {flex-direction: row;}
+    &-column {flex-direction: column;}
+  }
+  &-wrap{flex-wrap: wrap;}
+  &-nowrap{flex-wrap: nowrap;}
+  &-wrapre{flex-wrap: wrap-reverse;}
+}
+// justify-content
+.jc{
+  &-center {justify-content: center;}
+  &-sb {justify-content: space-between;}
+  &-sa {justify-content: space-around;}
+  &-start {justify-content: flex-start;}
+  &-end {justify-content: flex-end;}
+}
+// align-items
+.ai{
+  &-aic {align-items: center;}
+}
+
+// position
+.pos {
+  &-rel {position: relative;}
+  &-abs {position: absolute;}
+  &-flex {position: flex;}
+  &-static {position: static;}
+  &-fixed {position: fixed;}
+}
+
+// transform
+.tsfm {
+  &-rY180 {transform: rotateY(180deg);}
+  &-r180 {transform: rotate(180deg);}
+}
+
+
+/*wrap*/
+.g-menu{width: 100%;position: relative;z-index: 3;background-color: #fff;border-bottom: 1px solid #e6e6e6;}
+.g-hd{width: 100%;position: relative;z-index: 2;background: #fff;box-shadow:0px 1px 14px -2px rgba(187, 187, 187, 0.45)}
+.g-slide{width: 100%;z-index: 1;background: #002a4c;}
+.g-news{z-index: 1;height: 680px;}
+.g-river{width: 100%;z-index: 1;height: 330px;}
+.g-regulate{width: 100%;z-index: 1;height: 630px;margin-top: 30px;}
+.g-riverStyle{width: 100%;z-index: 1;height: 325px;margin-top: 15px;}
+.g-footer{width: 100%;z-index: 1;height: 200px;background: #494a4c;color: #fff;}
+.m-hd{width: 1200px;margin: 0 auto;background: #fff;}
+.g-hd .m-hd{height: 76px;overflow: hidden;}
+.g-menu .m-hd{height: 32px;line-height: 32px;}
+.g-slide .m-hd{height: 490px;overflow: hidden;background: #002a4c;}
+.g-news .m-hd{height: auto;}
+.g-footer .m-hd{width: 1200px;height: 100%;background: #494a4c;}
+.g-bgc{background: #fff;width: 1200px;height: 100%;padding: 0 10px;}
+.g-news .g-bgc{height: 665px;}
+.g-river .g-bgc{height: 330px;position: relative;}
+.g-regulate .g-bgc{height: 630px;background: #f3f2f2;}
+/*public*/
+.u-margin10{margin-top: 10px;}
+.u-margin20{margin-top: 20px;}
+.u-margin40{margin-top: 40px;}
+.u-margin30{margin-top: 30px;}
+.n-margin10{margin-bottom: 10px;}
+.n-margin20{margin-bottom: 10px;}
+.e-margin10{margin: 10px 0;}
+.e-margin20{margin: 20px 0;}
+/*menu*/
+.m-siteMap{width: 700px;font-size: 14px;padding-left:15px;height: 32px;}
+.m-search {width: 40px;height:40px;cursor: pointer;overflow: hidden;position: relative;transition: .3s;}
+.m-search:hover{width: 300px;}
+.m-search:hover .pic-search{right: 275px;}
+.pic-search{position: absolute;right: 12px;top: 10px;z-index: 5;}
+.pic-search:before{vertical-align:middle;}
+.m-search input{position: absolute;right: 0px;top: 0;border: 0;width: 300px;height: 40px;text-indent: 40px;background-color: #dedede;z-index: 3;}
+.m-login{width: 100px;text-align: center;cursor: default;height: 32px;margin-right: 35px;}
+.m-login a{display: block;float: left;width: 50%;height: 32px;text-align: center;}
+/*nav*/
+.m-logo{width: 310px;height: 76px;position: relative;background: url('https://www.zhihuihedao.cn/static/images/reg_logo.png') 0 6px no-repeat;}
+.m-score {margin-top: 10px;cursor: pointer;}
+.m-logo a{text-indent: -2000px;display: block;width: 350px;height: 76px;overflow: hidden;}
+.m-nav{position: relative;height: 76px;line-height: 70px;font-size: 16px;}
+.nav-line{position: absolute;left: 0;bottom: 0;width: 110px;height: 3px;background: #3d8ccb;z-index: 3;}
+.m-nav ul{z-index: 2;position: relative;}
+.m-nav li{float: left;width: 110px;}
+.m-nav li:first-child{width: 90px;}
+.m-nav li:last-child{width: 90px;}
+.m-nav a{color: #595959;text-align: center;padding: 10px 5px;font-size: 16px;height: 65px;}
+.m-nav .on a{color: #3d8ccb;border-bottom:3px solid #3d8ccb;font-size: 17px;}
+.m-nav a:hover{color: #3d8ccb;}
+/*footer*/
+.l-f-link{padding-top: 50px;height: 20px;line-height: 20px;}
+.l-f-link a{display: block;width: 24%;float: left;color: #fff;text-align: center;}
+.l-f-link a:after{content: "|";padding-left: 25%;}
+.l-f-link a:last-child:after{content: "";}
+
+.l-f-icp{padding-top: 30px;height: 20px;line-height: 20px;text-align: center;}
+
+/*g-pendant*/
+.g-pendant{position: fixed;bottom: 50%;z-index: 999;height: auto;width: 48px;left: 50%;margin-left: 620px;margin-top: -200px;box-shadow: 0 0 5px rgba(0, 0, 0, 0.08);text-align: center;color: #fff;}
+.m-backtop{width: 48px;height: 48px;background: #14a7df;line-height: 48px;font-size: 16px;cursor: pointer;margin-top: 10px;display: none;}
+.m-pddownApp{width: 48px;height: 152px;background: #14a7df;}
+.l-pddownApp{width: 100%;height: 76px;line-height: 60px;cursor: pointer;}
+.m-pdFast{width: 100%;height: 153px;background: #14a7df;font-size: 16px;line-height: 30px;margin-top: 10px;padding-top: 15px;cursor: pointer;}
+.toolbar-item,.toolbar-layer{background: url(https://www.zhihuihedao.cn/static/images/icon_toolbar.png) no-repeat;}
+.toolbar-item{position:relative;-moz-transition:background-position .5s;-ms-transition:background-position .5s;-o-moz-transition:background-position .5s;-webkit-moz-transition:background-position .5s;transition:background-position .5s;}
+.toolbar-item:hover .toolbar-layer{opacity:1;filter:alpha(opacity=100);transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1);}
+
+.toolbar-item-feedback:hover{background-position:0 -488px;}
+.toolbar-item-weixin .toolbar-layer{height:212px;background-position:0 0;}
+.toolbar-item-app{background-position: -22px -458px;}
+.toolbar-item-app:hover{background-color:#1dc0ff;}
+.l-pddownApp .toolbar-layer{height:180px;background-position:-18px -1512px;}
+.toolbar-item-ios.l-pddownApp .toolbar-layer{height:180px;background-position:-18px -992px;}
+.toolbar-item-ios{background-position: -22px -573px;}
+.toolbar-item-ios:hover{background-color:#1dc0ff;}
+.toolbar-item-ios .toolbar-layer{height:194px;background-position:-18px -992px;}
+.toolbar-item-top{background-position: -23px -831px;}
+.toolbar-item-top:hover{background-position: -23px -893px;}
+.toolbar-layer{position:absolute;right:46px;bottom:-10px;width:172px;opacity:0;filter:alpha(opacity=0);
+transform-origin: 95% 95%;-moz-transform-origin: 95% 95%;-ms-transform-origin: 95% 95%;-o-transform-origin: 95% 95%;-webkit-transform-origin: 95% 95%;transform:scale(0.01);
+-moz-transform:scale(0.01);-ms-transform:scale(0.01);-o-transform:scale(0.01);-webkit-transform:scale(0.01);transition:all .5s;-moz-transition:all .5s;-ms-transition:all .5s;-o-transition:all .5s;-webkit-transition:all .5s;}
+
+.m-pdFast{background-image: url(https://www.zhihuihedao.cn/static/images/icon_toolbar.png);background-position:  -22px -641px;}
+.m-pdFast:hover{background-color:#1dc0ff;}
+
+/*login*/
+.m-login-btn{
+  width: 100%;height: 100%;
+  a {color: #8e8e8e;}
+}
+.m-logined{width: 100%;height: 100%;cursor: default;position: relative;}
+.m-logined-panel{display: none;position: absolute;top: 32px;right: -16px;width: 100px;height: auto;border: 1px solid #F1F1F1;z-index: 99;background-color: #f3f2f2;}
+.p-username{width: 100%;height: 100%;overflow: hidden;position: relative;padding-right: 16px;transition: .3s;text-align: right;}
+.p-username::after{position: absolute;content: '▼';width: 20px;height: 20px;color: #ccc;right: 0;top: 0;font-size: 14px;visibility: visible;}
+.m-logined:hover .m-logined-panel{display: block;}
+.m-logined-panel a{display: block;width: 100%;height: 30px;border-bottom: 1px solid #F1F1F1;text-align: center;line-height: 30px;}
+
+/*modal*/
+.m-modal{
+  width: 460px;margin-left: -230px;background: #fff;border: 1px solid #f1f1f1;position: fixed;top: 0;left: 50%;z-index: 999;border-radius: 6px;
+  box-shadow: 0 0 20px 4px rgba(60, 57, 57, 0.15);transition: .3s;
+  .m-form-tip-login{color: #14a7df;}
+  .m-form-tip-error{color: rgb(233, 27, 27);}
+}
+.m-modal-show{top: 25%;}
+.m-modalInfo{width: 460px;margin-left: -230px;padding: 15px;}
+.m-form{width: 85%;margin: 0 auto;}
+.m-modal-title{width: 100%;height: 40px;line-height: 40px;font-size: 20px;color: #464646;position: relative;text-align: center;font-weight: 400;letter-spacing: 2px;border-bottom: 1px solid #f3f2f2;}
+.m-modal-close{position: absolute;right: 10px;top: 10px;cursor: pointer;width: 35px;height: 25px;background-image: url(https://www.zhihuihedao.cn/static/images/icon_toolbar.png);background-position: -8px -1209px;background-repeat: no-repeat;}
+.m-modal-replay-close{position: absolute;right: 10px;top: 10px;cursor: pointer;width: 35px;height: 25px;background-image: url(https://www.zhihuihedao.cn/static/images/icon_toolbar.png);background-position: -8px -1209px;background-repeat: no-repeat;}
+.m-modal-content{padding: 15px;position: relative;}
+.m-form .m-form-bg{width:100%;height:45px;position:relative;margin-bottom:15px;line-height: 36px;border-radius: 3px;}
+.m-task-login .m-form .m-form-bg{width:100%;height:40px;position:relative;margin-bottom:10px;line-height: 36px;border-radius: 3px;}
+.m-form-bg{border:1px solid #c0bbbb;height:45px;line-height:45px;position:relative;border-radius: 5px;}
+.m-form input:focus{background-color:#fff;outline:0}
+.m-form input:-webkit-autofill{box-shadow:0 0 0 1000px #fff inset}
+.m-form .m-form-bg input{border:0;height:42px;font-size:14px;width:100%;text-indent:15px;line-height:45px;border:0;background:transparent;border-radius: 5px;color: #6F6F6F;}
+.m-task-login .m-form .m-form-bg input{height:37px;line-height:37px;}
+.m-form .m-form-bg input:focus{background:transparent;}
+.m-form .m-form-bg input:active{background:transparent;}
+.m-form .m-form-bg input:visited{background:transparent;}
+.m-form .m-form-bg input:-webkit-autofill{background:transparent;background-image: none;}
+.m-form-label{text-align: left;padding: 8px 5px;}
+.m-modal-welcome{text-align: center;letter-spacing:2px;}
+.m-form-fogot{color: #efaf1a;float: right;padding: 0 15px;}
+.m-form-resister{color: #14a7df;float: right;padding: 0 18px;}
+.m-modal-control{padding: 15px 0;}
+.btn-login{font-size:16px;letter-spacing:1px;width:60%;height:36px;color:#fff;margin:0 auto;text-align:center;line-height:36px;background: #14a7df;border-radius: 6px;cursor: pointer;}
+.m-resister{text-align: center;padding: 5px;}
+.m-modal-other-title{text-align: center;padding: 5px;}
+.m-modal-icon{text-align: center;height: 50px;width: 180px;margin: 0 auto;padding: 5px 0;}
+.m-modal-icon-list{background-image: url(https://www.zhihuihedao.cn/static/images/icon_toolbar.png);background-repeat:  no-repeat;width: 50px;height: 45px;float: left;cursor: pointer;}
+.m-modal-icon-list.icon-qq{background-position: -8px -1269px;overflow: hidden;}
+.m-modal-icon-list.icon-qq a{opacity: 0;}
+.m-modal-icon-list.icon-weibo{background-position: -8px -1339px;margin-left: 15px;}
+.m-modal-icon-list.icon-weixin{background-position: -8px -1410px;margin-left: 15px;}
+.m-modal-other{padding-bottom: 20px;}
+
+.login-msg{padding: 5px 15px;position: absolute;bottom: 0;left: 35px;color: #56d0ff;}
+.m-replay textarea{width: 100%;height: 120px;border-radius: 3px;border: 1px solid #ccc;padding: 10px;line-height: 20px;}
+/*otherPage*/
+.g-reg-top{width: 100%;height: 75px;background-color: #0e4678;}
+.g-reg-top .m-hd{width: 1000px;height: 75px;margin: 0 auto;background: url('https://www.zhihuihedao.cn/static/images/toplogo2.png') 0 3px no-repeat;cursor: pointer;}
+.g-reg-top .m-hd h1{padding-left: 330px;line-height: 75px;font-size: 24px;font-weight: normal;letter-spacing: 6px;}
+/*reg*/
+.g-register{background: #F1F1F1;}
+.g-register .m-form{width: 1000px;box-shadow: 0 0 16px rgba(0,0,0,0.31);background: #fff;margin-top: 72px;padding: 20px 0;}
+.g-register .m-form h1{font-size: 26px;margin: 41px 0 20px;text-align: center;font-weight: normal;}
+.coyp2018{color: #9c9c9c;text-align: center;padding: 25px 0;}
+.g-register .m-form-label{width: 72px;display: inline-block;text-align: right;overflow: hidden;padding: 0 15px 0 0;}
+.g-register .m-form-bg{width: 271px;display: inline-block;}
+.g-register .m-form-validate{width: 223px;display: inline-block;color: red;line-height: 38px;padding-left: 15px;position: absolute;top: 0;left: 375px;}
+.m-form-list{width: 382px;height: 46px;margin-bottom: 10px;position: relative;}
+.m-center{width: 382px;margin: 0 auto;}
+.m-form-verify{width: 91px;margin-left: 10px;display: inline-block;line-height: 45px;text-align: center;border: 1px solid #c0bbbb;cursor: pointer;color: #000;border-radius: 3px;}
+.v-disabled{background: #e2e2e2;color: #595757;}
+.m-c-checked{width: 345px;height: 40px;line-height: 40px;color: #7b7b7b;margin: 0 auto;font-size: Tahoma;vertical-align: middle;position: relative;}
+.m-c-checked input,.m-c-checked label{vertical-align: middle;padding: 0 5px;}
+.m-c-btn {margin-top: 3px;margin-bottom: 21px;}
+.m-c-btn .btn-reg{cursor: pointer;background-color: #3291d0;border: 1px solid #3291d0;border-radius: 3px;color: #fff;font-size: 16px;line-height: 35px;width: 345px;height: 35px;
+text-align: center;margin: 0 auto;letter-spacing: 2px;cursor: pointer;}
+.g-register .m-c-checked #promiseCheck{padding: 0;margin: 0;}
